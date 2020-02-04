@@ -2,5 +2,5 @@
 
 while true; do
 	/bin/bash ~/Script/wp-change.sh
-	sleep 5m
+	sleep 7m
 done
