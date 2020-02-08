@@ -6,7 +6,7 @@ xrandr --output DP-0 --off
 bluetoothctl power on
 bluetoothctl&
 picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
-keynav
+# keynav&
 konsole -e nvim ~/Overt/config/sh/.zshrc&
 konsole -e nvim ~/Overt/config/vim/init.vim
 #nm-applet &
