@@ -8,7 +8,7 @@ picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -
 /bin/bash ~/Script/wp-autochange.sh &
 /bin/bash ~/Script/dwm-status.sh &
 
-sleep 10
+sleep 1
 kdeconnect-cli
 konsole -e nvim ~/Templates/hgd.md &
 konsole -e nvim

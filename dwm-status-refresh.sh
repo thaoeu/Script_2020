@@ -156,7 +156,7 @@ get_bytes
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 # vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name " $(print_mem) $vel_recv[$(dwm_alsa) ]$(print_date)$(show_record) "
+xsetroot -name " $(print_mem)▸$vel_recv[$(dwm_alsa) ]$(print_date)$(show_record) "
 
 # $(print_bat) 
 # Update old values to perform new calculations
