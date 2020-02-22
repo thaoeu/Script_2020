@@ -1,6 +1,4 @@
 #!/bin/bash
-# Screenshot: http://s.natalian.org/2013-08-17/dwm_status.png
-# Network speed stuff stolen from http://linuxclues.blogspot.sg/2009/11/shell-script-show-network-speed.html
 
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
@@ -25,9 +23,9 @@ function get_velocity {
 	velKB=$(echo "1000000000*($value-$old_value)/1024/$timediff" | bc)
 	if test "$velKB" -gt 1024
 	then
-		echo $(echo "scale=2; $velKB/1024" | bc)MB/s
+		echo $(echo "scale=2; $velKB/1024" | bc)Mb◭
 	else
-		echo ${velKB}KB/s
+		echo ${velKB}kb◂
 	fi
 }
 
@@ -37,18 +35,8 @@ old_received_bytes=$received_bytes
 old_transmitted_bytes=$transmitted_bytes
 old_time=$now
 
-print_volume() {
-	volume="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
-	if test "$volume" -gt 0
-	then
-		echo -e "\uE05D${volume}"
-	else
-		echo -e "Mute"
-	fi
-}
-
 print_mem(){
-	memfree=$(($(grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1125))
+	memfree=$(($(grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1000))
 	echo -e "$memfree"
 }
 
@@ -58,23 +46,6 @@ print_temp(){
 }
 
 #!/bin/bash
-
-get_time_until_charged() {
-
-	# parses acpitool's battery info for the remaining charge of all batteries and sums them up
-	sum_remaining_charge=$(acpitool -B | grep -E 'Remaining capacity' | awk '{print $4}' | grep -Eo "[0-9]+" | paste -sd+ | bc);
-
-	# finds the rate at which the batteries being drained at
-	present_rate=$(acpitool -B | grep -E 'Present rate' | awk '{print $4}' | grep -Eo "[0-9]+" | paste -sd+ | bc);
-
-	# divides current charge by the rate at which it's falling, then converts it into seconds for `date`
-	seconds=$(bc <<< "scale = 10; ($sum_remaining_charge / $present_rate) * 3600");
-
-	# prettifies the seconds into h:mm:ss format
-#	pretty_time=$(date -u -d @${seconds} +%T +%V);
-
-	echo $pretty_time;
-}
 
 get_battery_combined_percent() {
 
@@ -89,38 +60,18 @@ get_battery_combined_percent() {
 	echo $percent;
 }
 
-get_battery_charging_status() {
-
+print_bat(){
+	#echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
 	if $(acpi -b | grep --quiet Discharging)
 	then
-		echo "  ";
+		echo "$(get_battery_combined_percent) ";
 	else # acpi can give Unknown or Charging if charging, https://unix.stackexchange.com/questions/203741/lenovo-t440s-battery-status-unknown-but-charging
-		echo "~";
+		echo "λ";
 	fi
 }
 
-
-
-print_bat(){
-	#hash acpi || return 0
-	#onl="$(grep "on-line" <(acpi -V))"
-	#charge="$(awk '{ sum += $1 } END { print sum }' /sys/class/power_supply/BAT*/capacity)%"
-	#if test -z "$onl"
-	#then
-		## suspend when we close the lid
-		##systemctl --user stop inhibit-lid-sleep-on-battery.service
-		#echo -e "${charge}"
-	#else
-		## On mains! no need to suspend
-		##systemctl --user start inhibit-lid-sleep-on-battery.service
-		#echo -e "${charge}"
-	#fi
-	#echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
-	echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
-}
-
 print_date(){
-	date '+%m月%d日 %H:%M'
+	date '+%m•%d %H:%M'
 }
 
 show_record(){
@@ -154,11 +105,10 @@ get_bytes
 
 # Calculates speeds
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
-# vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name " $(print_mem)▸$vel_recv[$(dwm_alsa)]$(print_date)$(show_record) "
+xsetroot -name "  $(print_mem)▸$vel_recv$vel_trans $(print_temp)$(print_bat)[$(dwm_alsa)]$(print_date)$(show_record) "
 
-# $(print_bat) 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
 old_transmitted_bytes=$transmitted_bytes
