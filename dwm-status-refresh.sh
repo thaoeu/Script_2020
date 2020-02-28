@@ -29,7 +29,9 @@ function get_velocity {
 	fi
 }
 
+# --------
 # Get initial values
+# --------
 get_bytes
 old_received_bytes=$received_bytes
 old_transmitted_bytes=$transmitted_bytes
@@ -42,10 +44,9 @@ print_mem(){
 
 print_temp(){
 	test -f /sys/class/thermal/thermal_zone0/temp || return 0
-	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)C
+	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)°C
 }
 
-#!/bin/bash
 
 get_battery_combined_percent() {
 
@@ -69,17 +70,19 @@ print_bat(){
 		echo "λ";
 	fi
 }
-
+#--------
+# date from 1970-01-01
+#--------
 print_date(){
-	date '+%m•%d %H:%M'
+	date '+%w%W%j%S%d'
 }
 
-show_record(){
-	test -f /tmp/r2d2 || return
-	rp=$(cat /tmp/r2d2 | awk '{print $2}')
-	size=$(du -h $rp | awk '{print $1}')
-	echo " $size $(basename $rp)"
-}
+# show_record(){
+# 	test -f /tmp/r2d2 || return
+# 	rp=$(cat /tmp/r2d2 | awk '{print $2}')
+# 	size=$(du -h $rp | awk '{print $1}')
+# 	echo " $size $(basename $rp)"
+# }
 
 
 LOC=$(readlink -f "$0")
@@ -102,12 +105,20 @@ export IDENTIFIER="unicode"
 #. "$DIR/dwmbar-functions/dwm_date.sh"
 
 get_bytes
+print_time(){
+	time=$(go run ~/go/src/thaoeu.site/status/status.go)
+	echo "$time"
+}
 
+
+get_bytes
+# --------
 # Calculates speeds
+# --------
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name "  $(print_mem)▸$vel_recv$vel_trans $(print_temp)$(print_bat)[$(dwm_alsa)]$(print_date)$(show_record) "
+xsetroot -name " $(print_mem)▸$vel_recv$vel_trans $(print_temp)$(show_record)$(print_bat)[$(dwm_alsa)] $(print_date) ▸$(print_time)  "
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
