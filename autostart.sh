@@ -9,8 +9,9 @@ picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -
 /bin/bash ~/Script/dwm-status.sh &
 
 kdeconnect-cli
+krunner &
 konsole -e nvim ~/Templates/hgd.md &
-konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
+#konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
 # konsole -e nvim ~/Overt/config/vim/init.vim
 #xfce4-power-manager &
 #xfce4-volumed-pulse &
