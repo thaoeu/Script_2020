@@ -25,7 +25,7 @@ function get_velocity {
 	then
 		echo $(echo "scale=2; $velKB/1024" | bc)Mb◭
 	else
-		echo ${velKB}kb◂
+		echo ${velKB}kb
 	fi
 }
 
@@ -44,7 +44,7 @@ print_mem(){
 
 print_temp(){
 	test -f /sys/class/thermal/thermal_zone0/temp || return 0
-	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)°C
+	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)°c
 }
 
 
@@ -67,14 +67,14 @@ print_bat(){
 	then
 		echo "$(get_battery_combined_percent) ";
 	else # acpi can give Unknown or Charging if charging, https://unix.stackexchange.com/questions/203741/lenovo-t440s-battery-status-unknown-but-charging
-		echo "λ";
+		echo "";
 	fi
 }
 #--------
 # date from 1970-01-01
 #--------
 print_date(){
-	date '+%w%W%j%S%d'
+	date '+%w%j%S%d'
 }
 
 # show_record(){
@@ -118,7 +118,7 @@ get_bytes
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name " $(print_mem) ▸$vel_recv $vel_trans $(print_temp)$(print_bat)[$(dwm_alsa)] $(print_date) ▸ $(print_time)  "
+xsetroot -name " $(print_mem) ⬇️$vel_recv⬆️$vel_trans $(print_bat) l$(dwm_alsa)l $(print_temp) $(print_date) ▸$(print_time)  "
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
