@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 3
+sleep 7
 #xmodmap ~/.Xmodmap &
 fcitx &
 workrave &
