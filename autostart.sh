@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # test zone
-xrandr --output DP-0 --off
+# xrandr --output DP-0 --off
+xrandr --auto --output DP-0 --pos 0x00 --mode 1920x1080 --output HDMI-0 --mode 1920x1080 --primary --left-of DP-0
 bluetoothctl power on
 bluetoothctl &
-picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
+#picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
 /bin/bash ~/Script/dwm-status.sh &
 /bin/bash ~/Script/wp-autochange.sh &
 /bin/bash ~/Script/kde-start.sh &
