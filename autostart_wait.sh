@@ -6,4 +6,4 @@ fcitx &
 keynav &
 # workrave &
 
-xmodmap ~/Overt/config/xmodmap/xmodmap_esc2Caps
+#xmodmap ~/Overt/config/xmodmap/xmodmap_esc2Caps
