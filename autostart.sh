@@ -7,7 +7,8 @@
 xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 1920x0 --rotate left
 bluetoothctl power on
 bluetoothctl &
-xfce4-power-manager
+xfce4-power-manager &
+nm-applet &
 #picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
 /bin/bash ~/Script/dwm-status.sh &
 /bin/bash ~/Script/wp-autochange.sh &
