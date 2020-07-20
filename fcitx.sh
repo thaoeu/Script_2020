@@ -1,6 +1,8 @@
 #!/bin/bash
 killall fcitx
-if [ $? != 0 ];then
+if [ $? = 0 ];then
+	echo "was kill"
+else [ $? != 0 ]
 	fcitx &
 fi
 
