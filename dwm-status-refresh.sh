@@ -77,6 +77,15 @@ print_date(){
 	date '+%w%j%S%d'
 }
 
+# --------
+# Countdown
+# --------
+
+get_bytes
+print_Countdown(){
+	Countdown=$(go run ~/go/src/thaoeu.site/Countdown/Countdown.go)
+	echo "$Countdown"
+}
 # show_record(){
 # 	test -f /tmp/r2d2 || return
 # 	rp=$(cat /tmp/r2d2 | awk '{print $2}')
@@ -118,7 +127,7 @@ get_bytes
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name " $(print_mem) ⬇️$vel_recv⬆️$vel_trans $(print_bat) 🔊$(dwm_alsa)_$(print_temp) $(print_date) ▸$(print_time)  "
+xsetroot -name " $(print_mem) ⬇️$vel_recv⬆️$vel_trans $(print_bat) 🔊$(dwm_alsa)_$(print_temp) $(print_Countdown) $(print_date) ▸$(print_time)  "
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
