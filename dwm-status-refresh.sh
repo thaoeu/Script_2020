@@ -74,7 +74,7 @@ print_bat(){
 # date from 1970-01-01
 #--------
 print_date(){
-	date '+%w%j%S%d'
+	date '+%u%j%S%d'
 }
 
 # --------
