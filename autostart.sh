@@ -15,7 +15,6 @@ bluetoothctl power on
 /bin/bash ~/Script/wp-autochange.sh &
 /bin/bash ~/Script/kde-start.sh &
 
-sleep 5
 fcitx &
 #picom
 #kdeconnect-cli
