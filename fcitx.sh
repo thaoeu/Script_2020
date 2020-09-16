@@ -1,7 +1,7 @@
 #!/bin/bash
 killall fcitx
 if [ $? = 0 ];then
-	echo "was kill"
+	echo "W kill"
 else [ $? != 0 ]
 	fcitx &
 fi

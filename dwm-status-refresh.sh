@@ -124,10 +124,13 @@ get_bytes
 # --------
 # Calculates speeds
 # --------
-vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
-vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+vel(){
+	vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
+	echo "$vel_recv"
+	vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+}
 
-xsetroot -name " $(print_mem) $vel_recv $(print_bat)$(print_temp)$(print_date)▸$(dwm_alsa)"
+xsetroot -name " $(print_mem) $(vel) $(print_bat)$(print_temp)$(print_date)▸$(dwm_alsa)"
 
 # Update old values to perform new calculations
 #  $(print_Countdown)⬇️⬆️$vel_trans $(print_time)  
