@@ -2,9 +2,8 @@
 
 #xrandr --auto --output DP-0 --pos 0x00 --mode 1920x1080 --output HDMI-0 --mode 1920x1080 --primary --left-of DP-0
 #xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 1920x0 --rotate left
-xrandr --output DP-3 --primary --mode 1920x1080 --rate 120 --pos 0x0 --output DP-0 --mode 1920x1080 --pos 1920x10
-# xrandr --output eDP1 --mode 1920x1080
-# --rotate left
+#xrandr --output DP-3 --primary --mode 1920x1080 --rate 60 --pos 0x0 --output DP-0 --mode 1920x1080 --pos 1920x10
+xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --mode 1920x1080 --pos 1920x0 --rotate normal
 # bluetoothctl power on &
 # bluetoothctl &
 # xfce4-power-manager &
@@ -16,10 +15,8 @@ xrandr --output DP-3 --primary --mode 1920x1080 --rate 120 --pos 0x0 --output DP
 
 # dunst
 fcitx &
-#picom
 #kdeconnect-cli
 #konsole -e nvim ~/Templates/hgd.md &
 #konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
 # konsole -e nvim ~/Overt/config/vim/init.vim
 #xfce4-power-manager &
-#xfce4-volumed-pulse &
