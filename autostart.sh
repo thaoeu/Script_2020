@@ -15,7 +15,8 @@ xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --
 
 # dunst
 fcitx &
-#kdeconnect-cli
+kdeconnect-cli &
+syncthing -no-browser&
 #konsole -e nvim ~/Templates/hgd.md &
 #konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
 # konsole -e nvim ~/Overt/config/vim/init.vim
