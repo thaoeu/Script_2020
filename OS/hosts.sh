@@ -1,5 +1,13 @@
 #!/bin/bash
-sudo tee /etc/hosts <<< "# Github Hosts
+sudo tee /etc/hosts <<< "# Host addresses
+127.0.0.1  localhost
+192.168.2.1 the
+127.0.1.1  Thao
+::1        localhost ip6-localhost ip6-loopback
+ff02::1    ip6-allnodes
+ff02::2    ip6-allrouters
+
+# Github Hosts
 # update: 2020-06-10
 
 140.82.113.3 github.com
