@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-feh --recursive --randomize --bg-fill ~/Pictures/Puts
-#feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/view
+while true; do
 
-#feh --recursive --bg-fill ~/Pictures/Puts/23Ven-Mountain.jpg
+	feh --recursive --randomize --bg-fill ~/Pictures/Puts
+#	feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/view
+#	feh --recursive --bg-fill ~/Pictures/Puts/23Ven-Mountain.jpg
+	sleep 8m
+
+done
+

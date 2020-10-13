@@ -1,9 +1,8 @@
 #!/bin/bash
 
-sleep 5
+sleep 2
 #xmodmap ~/.Xmodmap &
 fcitx &
-# keynav &
+~/Script/OS/dwm-bar.sh &
+xmomap ~/Script/OS/xmodmap/xmodmap_esc2Caps &
 # workrave &
-
-#xmodmap ~/Overt/config/xmodmap/xmodmap_esc2Caps
