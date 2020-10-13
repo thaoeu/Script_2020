@@ -9,8 +9,8 @@ xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --
 # xfce4-power-manager &
 # nm-applet &
 # picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
-# ~/Script/dwm-status.sh &
-# ~/Script/wp-autochange.sh &
+~/Script/OS/dwm-bar.sh &
+~/Script/Video/wp-change.sh &
 ~/Script/xmodmap_Caps2Esc.sh &
 
 # dunst
