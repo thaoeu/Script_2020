@@ -22,3 +22,5 @@ dwm_alsa () {
 		fi
 	fi
 }
+
+dwm_alsa

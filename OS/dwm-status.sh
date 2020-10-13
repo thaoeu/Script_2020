@@ -2,6 +2,6 @@
 
 while true
 do
-	bash ./dwm-status-refresh.sh
+	bash ./bak.sh
 	sleep 2
 done

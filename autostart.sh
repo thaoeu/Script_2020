@@ -7,16 +7,17 @@ xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --
 # bluetoothctl power on &
 # bluetoothctl &
 # xfce4-power-manager &
-#nm-applet &
-#picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
-~/Script/dwm-status.sh &
-~/Script/wp-autochange.sh &
+# nm-applet &
+# picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
+# ~/Script/dwm-status.sh &
+# ~/Script/wp-autochange.sh &
+~/Script/xmodmap_Caps2Esc.sh &
 
 # dunst
 fcitx &
 kdeconnect-cli &
 syncthing -no-browser&
-#konsole -e nvim ~/Templates/hgd.md &
-#konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
+# konsole -e nvim ~/Templates/hgd.md &
+# konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
 # konsole -e nvim ~/Overt/config/vim/init.vim
-#xfce4-power-manager &
+# xfce4-power-manager &

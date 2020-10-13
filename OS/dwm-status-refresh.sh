@@ -11,6 +11,21 @@ function get_byte {
 	now=$(date +%s%N)
 }
 
+# function get_velocity {
+# 	value=$1
+# 	old_value=$2
+# 	now=$3
+# 
+# 	timediff=$(($now - $old_time))
+# 	velKB=$(echo "1000000000*($value-$old_value)/1024/$timediff" | bc)
+# 	if test "$velKB" -gt 1024
+# 	then
+# 		echo $(echo "scale=2; $velKB/1024" | bc)MB/s
+# 	else
+# 		echo ${velKB}KB/s
+# 	fi
+# }
+
 function get_velocity {
 	value=$1
 	old_value=$2
@@ -25,7 +40,6 @@ function get_velocity {
 		echo ${velKB}KB/s
 	fi
 }
-
 # Get initial values
 get_bytes
 old_received_bytes=$received_bytes
@@ -110,9 +124,9 @@ print_bat(){
 	echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
 }
 
-print_date(){
-	date '+%Y年%m月%d日 %H:%M'
-}
+#	 print_date(){
+#		date '+%Y年%m月%d日 %H:%M'
+#	 }
 
 show_record(){
 	test -f /tmp/r2d2 || return
@@ -125,6 +139,17 @@ show_record(){
 LOC=$(readlink -f "$0")
 DIR=$(dirname "$LOC")
 export IDENTIFIER="unicode"
-. "$DIR/dwm-functions/dwm_alsa.sh"
+. "$DIR/dwmbar-functions/dwm_alsa.sh"
+. "$DIR/bar-functions/dwm_resources.sh"
 
-xsetroot -name "$(Memory)M ◭$(vel) $(print_bat)$(print_temp)$(print_date)▸$(dwm_alsa)"
+
+vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
+vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+
+xsetroot -name "$(dwm_resources) ⇄❖ϟ⎇ $vel_recv◭ $vel_trans $(print_bat)$(print_temp)▸$(dwm_alsa)"
+# Update old values to perform new calculations
+old_received_bytes=$received_bytes
+old_transmitted_bytes=$transmitted_bytes
+old_time=$now
+
+exit 0
