@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
+while [[ true ]]; do
 
-while true; do
-
-	feh --recursive --randomize --bg-fill ~/Pictures
-#	feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/view
-#	feh --recursive --bg-fill ~/Pictures/Puts/23Ven-Mountain.jpg
+	bash ./wp-change-refresh.sh
 	sleep 8m
-
+	
 done
-
