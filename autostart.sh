@@ -12,7 +12,7 @@ bluetoothctl &
 # picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
 
 kdeconnect-cli &
-syncthing -no-browser&
+#syncthing -no-browser&
 # konsole -e nvim ~/Templates/hgd.md &
 # konsole -e nvim ~/Templates/qmk_firmware/keyboards/bggpad/keymaps/default/keymap.c
 # konsole -e nvim ~/Overt/config/vim/init.vim
