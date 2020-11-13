@@ -6,6 +6,7 @@
 #xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 1920x0 --rotate left
 #xrandr --output DP-3 --primary --mode 1920x1080 --rate 60 --pos 0x0 --output DP-0 --mode 1920x1080 --pos 1920x10
 ~/Script/Video/wp-change.sh &
+~/Fasttop/verysync-linux-amd64-v2.2.0/verysync &
 bluetoothctl power on &
 bluetoothctl &
 # nm-applet &
