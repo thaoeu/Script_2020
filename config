@@ -4,10 +4,10 @@
 	bare = false
 	logallrefupdates = true
 [remote "github"]
-	url = git@github.com:thaoeu/
+	url = git@github.com:thaoeu/#>#
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [remote "gitee"]
-	url = git@gitee.com:thaoeu/
+	url = git@gitee.com:thaoeu/#>#
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
 	remote = origin
