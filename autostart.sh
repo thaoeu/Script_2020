@@ -5,7 +5,8 @@
 # xrandr --output DP-0 --scale 0.75 &
 # xrandr --output DP-0 --rate 40.01
 ~/Script/Video/wp-change.sh &
-~/Fasttop/verysync-linux-amd64-v2.2.0/verysync &
+~/Script/OS/dwm-bar.sh &
+#~/Fasttop/verysync-linux-amd64-v2.2.0/verysync &
 bluetoothctl power on &
 #bluetoothctl &
 # nm-applet &
