@@ -1,2 +1,2 @@
 #!/bin/bash
-st ranger &
+st lf &
